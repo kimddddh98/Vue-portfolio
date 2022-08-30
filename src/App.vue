@@ -286,8 +286,6 @@ export default {
       width: 100%;
       height: 100%;
       overflow: hidden;
-      // overflow-x: hidden;
-      // background: rgb(237,242,246);
       background-image: $grColor;
   }
 
@@ -311,7 +309,6 @@ export default {
 
   header {
       width: 100vw;
-      // background-color: rgba($color: #323f6e, $alpha: 0.6);
       padding: 10px 0;
       position: fixed;
       z-index: 9;
@@ -393,48 +390,6 @@ export default {
       height: 100%;
   }
 
-  #loading {
-      position: absolute;
-      top: 0;
-      background-color: #000000;
-      width: 100vw;
-      height: 100vh;
-      // color:$color;
-      &::after {
-          content: '';
-          text-align: center;
-          width: 100%;
-          // height: 50px;
-          height: 20px;
-
-          position: absolute;
-          top: 50%;
-          opacity: 1;
-          transform: translateY(-50%);
-          background-color: #fff;
-          color: black;
-          overflow: hidden;
-          animation: load 1s linear;
-      }
-  }
-  @keyframes load {
-      0% {
-          width: 0;
-          height: 2px;
-          opacity: 0;
-      }
-      50% {
-          width: 100%;
-          // display: n;
-          opacity: 1;
-          height: 2px;
-      }
-      100% {
-          height: 20px;
-          // top:0
-      }
-  }
-
   #container {
       height: 100vh;
       display: flex;
@@ -449,7 +404,6 @@ export default {
           top: 0;
           left: 0;
           color: $color;
-          // color:$bg;
           display: flex;
           justify-content: space-between;
           font-family: $mainFont;
@@ -470,7 +424,6 @@ export default {
       #circle {
           width: 100%;
           height: 100%;
-          // perspective: 800;
           position: absolute;
           display: flex;
           justify-content: center;
@@ -683,7 +636,6 @@ export default {
                   display:flex;
                   &>div{
                   width: 50%;
-                  // border: 1px solid #000;
                   img{
                       width: 100%;
                       height: 100%;

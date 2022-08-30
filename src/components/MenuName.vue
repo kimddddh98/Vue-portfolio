@@ -1,5 +1,5 @@
 <template>
-    <p class="circleTop" :style="{fontSize:homeFont}">{{menuname}}</p>
+    <p class="circleTop" :style="{fontSize:homeFont}" @click="suba">{{menuname}}</p>
 </template>
 <script>
 export default {
