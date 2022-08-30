@@ -203,6 +203,7 @@ export default {
       e.preventDefault()
       this.header = false
       this.main = true
+      this.click = 0
       setTimeout(() => {
         this.transform = true
       }, 2500)
