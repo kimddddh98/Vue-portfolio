@@ -5,7 +5,7 @@
   <div id="container" v-show="main" @wheel="mainWheel">
       <div id="main-text">
           <div>Kim<br>Dong-Hyeon</div>
-          <div>Front-end<br>Developer vue</div>
+          <div>Front-end<br>Developer</div>
       </div>
       <div id="menu">
           <div id="circle">
