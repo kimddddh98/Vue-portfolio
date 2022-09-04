@@ -168,12 +168,12 @@ export default {
       }, 500)
       for (let i = 0; i < document.querySelectorAll('.circleItem').length; i++) {
         if (e.target === document.querySelectorAll('.circleItem')[i]) {
+          this.click = i
           setTimeout(() => {
             full.style.left = -100 * i + 'vw'
             headerMenu[i + 1].style.color = '#8AAAE5'
             headerMenu[i + 1].parentNode.style.backgroundColor = '#fefefe'
           }, 100)
-          this.click = i
         }
       }
     },
