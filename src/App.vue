@@ -15,8 +15,6 @@
               </div>
             </div>
           </div>
-          <!-- <div v-for="(item,index) in circleStyle" @click="subPage" @mouseover="circleOver" @mouseout="circleOut" class="circleItem" :style="item" :key="item" >{{index}} </div> -->
-          <!-- <div v-for="(item,index) in circleStyle" @click="subPage" @mouseover="circleOver" @mouseout="circleOut" class="circleItem" :style="item" :key="item" >{{index}} </div> -->
           <transition name="fade">
             <div @click="subPage" class="circleItem" :style="circleStyle[0]" v-if="transform">
               <MenuNameVue :menuname="navName[0]"></MenuNameVue>
@@ -152,24 +150,22 @@ export default {
     subPage: function (e) {
       const headerMenu = document.querySelectorAll('.menuColor')
       const full = document.getElementById('full')
-      full.style.width = this.circleStyle.length * 100 + 'vw'
       this.main = false
       this.transform = false
       setTimeout(() => {
         this.header = true
         this.sub = true
         document.getElementById('project').style.width = this.circleStyle.length * 100 + '%'
-      }, 500)
-      for (let i = 0; i < document.querySelectorAll('.circleItem').length; i++) {
-        if (e.target === document.querySelectorAll('.circleItem')[i]) {
-          this.click = i
-          setTimeout(() => {
-            full.style.left = -100 * i + 'vw'
-            headerMenu[i + 1].style.color = '#8AAAE5'
-            headerMenu[i + 1].parentNode.style.backgroundColor = '#fefefe'
-          }, 100)
+        full.style.width = this.circleStyle.length * 100 + 'vw'
+        for (let i = 0; i < document.querySelectorAll('.circleItem').length; i++) {
+          if (e.target === document.querySelectorAll('.circleItem')[i]) {
+            this.click = i
+          }
         }
-      }
+        full.style.left = -100 * this.click + 'vw'
+        headerMenu[this.click + 1].style.color = '#8AAAE5'
+        headerMenu[this.click + 1].parentNode.style.backgroundColor = '#fefefe'
+      }, 500)
     },
     mainWheel: function (e) {
       const found = /-\d+|\d+/g
@@ -599,6 +595,7 @@ export default {
       @content;
   }
   #full {
+      width: 500vw;
       height: 100vh;
       display: flex;
       align-items: center;
@@ -700,7 +697,7 @@ export default {
   align-items: center;
   &>div{
     width: 25%;
-    height: 60%;
+    height: 50%;
     position: relative;
     &:hover .front{
       transform: rotateY(180deg);
@@ -724,7 +721,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 2vw;
+      font-size: 1.5vw;
       backface-visibility: hidden;
       transition: 1s;
       cursor: pointer;

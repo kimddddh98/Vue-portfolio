@@ -78,7 +78,7 @@
                 </div>
                 <div>
                   <div class="front">E-mail</div>
-                  <div class="back">amawang@gmail.com</div>
+                  <div class="back">amawang11@gmail.com</div>
                 </div>
                 <div>
                   <div class="front">a</div>
