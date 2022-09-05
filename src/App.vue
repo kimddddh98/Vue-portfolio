@@ -50,10 +50,7 @@
         </div>
       </div>
     </transition>
-  <transition name="scale">
     <FullBox :sub="sub" :navName="navName" @subWheel="subWheel"></FullBox>
-  </transition>
-
   </div>
 </template>
 <script>
@@ -242,7 +239,7 @@ export default {
   @charset "utf-8";
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+SC&family=Fugaz+One&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
-
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
   *{
       margin: 0;
       padding: 0;
@@ -262,6 +259,7 @@ export default {
   $color: #fefefe;
   $grColor:radial-gradient(circle, rgba(237,242,246,1) 8%, rgba(138,170,229,1) 78%);
   $boxFont:  'Cormorant SC', serif;
+  $koFont: 'Noto Sans KR', sans-serif;
   // $boxFont: 'Fugaz One', cursive;
   $mainFont: 'Nosifer', cursive;
   @mixin flexCenter {
@@ -643,4 +641,102 @@ export default {
           }
       }
   }
-  </style>
+#about{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: $koFont;
+  font-size: 23px;
+  &>div{
+    height: 80%;
+  }
+  &Top{
+    width: 25%;
+    background-color: aqua;
+  }
+  &Bot{
+    width: 50%;
+    // background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    &>div{
+      width: 100%;
+      height: 30%;
+      // background-color:blue;
+    }
+  }
+}
+#skill{
+  display: flex;
+  flex-direction: column;
+  &>div{
+    width:100%;
+    height: 50%;
+    display: flex;
+    &:first-of-type{
+      border-bottom: 2px solid $color;
+    }
+    &>div{
+      width: 33.3%;
+      height: 100%;
+      // border:1px solid #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &:nth-of-type(2){
+        border-left: 2px solid $color;
+        border-right: 2px solid $color;
+      }
+      &>img{
+        width: 60%;
+      }
+    }
+  }
+}
+#contact{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  &>div{
+    width: 25%;
+    height: 60%;
+    position: relative;
+    &:hover .front{
+      transform: rotateY(180deg);
+    }
+    &:hover .back{
+      transform: rotateY(0deg);
+    }
+    // border: 2px solid $bg;
+    // background-color: rgba(254, 254, 254,0.8);
+    // color: $bg;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // font-size: 2vw;
+    &>div{
+      width: 100%;
+      height: 100%;
+      border: 2px solid $bg;
+      background-color: rgba(254, 254, 254,0.8);
+      color: $bg;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2vw;
+      backface-visibility: hidden;
+      transition: 1s;
+      cursor: pointer;
+    }
+    .front{
+        transform: rotateY(0);
+        position: absolute;
+      }
+      .back{
+        transform: rotateY(-180deg);
+        font-family: $koFont;
+      }
+  }
+}
+</style>

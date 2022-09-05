@@ -36,19 +36,55 @@
       <div class="full">
           <div>
               <h2>{{navName[1]}}</h2>
-              <div></div>
+              <div id="about">
+                <div id="aboutTop">사진</div>
+                <div id="aboutBot">
+                  <div>asd</div>
+                  <p>김동현</p>
+                  <p>1998.12.10</p>
+                  <p>경기도 안산시 거주</p>
+                  <p>amawang11@gmail.com</p>
+                  <p>2022.03 ~ 2022.09 라인컴퓨터아트학원 UI/UX 디자인 & 웹펴블리셔 과정</p>
+                  <p>웹디자인기능사(09.08 합격자발표)</p>
+                </div>
+              </div>
           </div>
       </div>
       <div class="full">
           <div>
               <h2>{{navName[2]}}</h2>
-              <div></div>
+              <div id="skill">
+                <div>
+                  <div><img :src="img[0]" alt="html"></div>
+                  <div><img :src="img[1]" alt="html"></div>
+                  <div><img :src="img[2]" alt="html"></div>
+                </div>
+                <div>
+                  <div><img :src="img[3]" alt="html"></div>
+                  <div><img :src="img[4]" alt="html"></div>
+                  <div><img :src="img[5]" alt="html"></div>
+
+                </div>
+              </div>
           </div>
       </div>
       <div class="full">
           <div>
               <h2>{{navName[3]}}</h2>
-              <div></div>
+              <div id="contact">
+                <div>
+                  <div class="front">H.P</div>
+                  <div class="back">010-4252-3496</div>
+                </div>
+                <div>
+                  <div class="front">E-mail</div>
+                  <div class="back">amawang@gmail.com</div>
+                </div>
+                <div>
+                  <div class="front">a</div>
+                  <div class="back">a</div>
+                </div>
+              </div>
           </div>
       </div>
       <div class="full">
@@ -72,7 +108,15 @@ export default {
       startx: null,
       up: null,
       projectI: 0,
-      moveI: 0
+      moveI: 0,
+      img: [
+        require('@/assets/html.png'),
+        require('@/assets/css.png'),
+        require('@/assets/js.png'),
+        require('@/assets/jquery.png'),
+        require('@/assets/vue.png'),
+        require('@/assets/sass.png')
+      ]
     }
   },
   methods: {
