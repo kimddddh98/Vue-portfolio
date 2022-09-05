@@ -2,62 +2,60 @@
   <div>
     <FullHeaderVue :navName="navName" :header="header" @home="home" @section="section"></FullHeaderVue>
     <transition name="scale">
-  <div id="container" v-show="main" @wheel="mainWheel">
-      <div id="main-text">
+      <div id="container" v-show="main" @wheel="mainWheel">
+        <div id="main-text">
           <div>Kim<br>Dong-Hyeon</div>
           <div>Front-end<br>Developer</div>
-      </div>
-      <div id="menu">
+        </div>
+        <div id="menu">
           <div id="circle">
-              <div class="cube">
-                  <div v-for="cubeItem in cube" :key="cubeItem.cubeTitle" :class="cubeItem.cubeClass">
-                      <p>{{cubeItem.cubeTitle}}</p>
-                  </div>
+            <div class="cube">
+              <div v-for="cubeItem in cube" :key="cubeItem.cubeTitle" :class="cubeItem.cubeClass">
+                <p>{{ cubeItem.cubeTitle }}</p>
               </div>
+            </div>
           </div>
           <!-- <div v-for="(item,index) in circleStyle" @click="subPage" @mouseover="circleOver" @mouseout="circleOut" class="circleItem" :style="item" :key="item" >{{index}} </div> -->
           <!-- <div v-for="(item,index) in circleStyle" @click="subPage" @mouseover="circleOver" @mouseout="circleOut" class="circleItem" :style="item" :key="item" >{{index}} </div> -->
           <transition name="fade">
-              <div @click="subPage" class="circleItem"
-                  :style="circleStyle[0]" v-if="transform">
-                  <MenuNameVue :menuname="navName[0]"></MenuNameVue>
+            <div @click="subPage" class="circleItem" :style="circleStyle[0]" v-if="transform">
+              <MenuNameVue :menuname="navName[0]"></MenuNameVue>
 
-              </div>
+            </div>
           </transition>
           <transition name="fade">
-              <div @click="subPage" class="circleItem"
-                  :style="circleStyle[1]" v-if="transform">
-                  <MenuNameVue :menuname="navName[1]"></MenuNameVue>
-              </div>
+            <div @click="subPage" class="circleItem" :style="circleStyle[1]" v-if="transform">
+              <MenuNameVue :menuname="navName[1]"></MenuNameVue>
+            </div>
           </transition>
 
           <transition name="fade">
-              <div @click="subPage" class="circleItem"
-                  :style="circleStyle[2]" v-if="transform">
-                  <MenuNameVue :menuname="navName[2]"></MenuNameVue>
+            <div @click="subPage" class="circleItem" :style="circleStyle[2]" v-if="transform">
+              <MenuNameVue :menuname="navName[2]"></MenuNameVue>
 
-              </div>
+            </div>
           </transition>
           <transition name="fade">
-              <div @click="subPage" class="circleItem"
-                  :style="circleStyle[3]" v-if="transform">
-                  <MenuNameVue :menuname="navName[3]"></MenuNameVue>
+            <div @click="subPage" class="circleItem" :style="circleStyle[3]" v-if="transform">
+              <MenuNameVue :menuname="navName[3]"></MenuNameVue>
 
-              </div>
+            </div>
           </transition>
 
           <transition name="fade">
-              <div @click="subPage" class="circleItem"
-                  :style="circleStyle[4]" v-if="transform">
-                  <MenuNameVue :menuname="navName[4]"></MenuNameVue>
-              </div>
+            <div @click="subPage" class="circleItem" :style="circleStyle[4]" v-if="transform">
+              <MenuNameVue :menuname="navName[4]"></MenuNameVue>
+            </div>
           </transition>
+        </div>
       </div>
-  </div>
-  </transition>
+    </transition>
+  <transition name="scale">
     <FullBox :sub="sub" :navName="navName" @subWheel="subWheel"></FullBox>
+  </transition>
+
   </div>
-  </template>
+</template>
 <script>
 import FullHeaderVue from './components/FullHeader.vue'
 import MenuNameVue from './components/MenuName.vue'
@@ -111,7 +109,6 @@ export default {
                 fullbox[i].style.width = 90 + 'vw'
                 fullbox[i].style.height = 85 + 'vh'
               }
-              // this.click = fullbox.length
               if (this.click < headerMenu.length - 2) {
                 for (let h = 0; h < headerMenu.length; h++) {
                   headerMenu[h].style.color = this.headerColor
@@ -629,7 +626,7 @@ export default {
           height: 100%;
           display: flex;
           align-items: center;
-          cursor: grabbing;
+          // cursor:;
           li {
               width: 20%;
               @include subBox;

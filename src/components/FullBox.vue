@@ -1,71 +1,63 @@
 <template>
-  <transition name="scale">
     <div id="full" v-show="sub" @wheel.prevent="subWheel">
-                <!-- <div v-for="(item,index) in circleStyle" :key="item"class="full">{{index}}</div> -->
-                <div class="full" id="outer">
-
-                    <ul id="project" @mousedown="mDown" @mouseup="mUp" @mousemove="mMove">
-                        <li id="project1" class="moveI">
-                            <h2>{{navName[0]}}-1</h2>
-                            <div>
-                                <div class="project-text">
-
-                                </div>
-                                <div class="project-img">
-                                    <!-- <img src="img/music.png" alt=""> -->
-                                </div>
-                            </div>
-                        </li>
-                        <li class="moveI">
-                            <h2>{{navName[0]}}-2</h2>
-                            <div>
-                            </div>
-                        </li>
-                        <li class="moveI">
-                            <h2>{{navName[0]}}-3</h2>
-                            <div>
-                            </div>
-                        </li>
-                        <li class="moveI">
-                            <h2>{{navName[0]}}-4</h2>
-                            <div>
-                            </div>
-                        </li>
-                        <li class="moveI">
-                            <h2>{{navName[0]}}-5</h2>
-                            <div>
-                            </div>
-                        </li>
-
-                    </ul>
-
+      <div class="full" id="outer">
+        <ul id="project" @mousedown="mDown" @mouseup="mUp" @mousemove="mMove">
+          <li id="project1" class="moveI">
+            <h2>{{navName[0]}}-1</h2>
+            <div>
+                <div class="project-text">
                 </div>
-                <div class="full">
-                    <div>
-                        <h2>{{navName[1]}}</h2>
-                        <div></div>
-                    </div>
-                </div>
-                <div class="full">
-                    <div>
-                        <h2>{{navName[2]}}</h2>
-                        <div></div>
-                    </div>
-                </div>
-                <div class="full">
-                    <div>
-                        <h2>{{navName[3]}}</h2>
-                        <div></div>
-                    </div>
-                </div>
-                <div class="full">
-                    <div>
-                        <h2>{{navName[4]}}</h2>
-                        <div></div>
-                    </div>
+                <div class="project-img">
                 </div>
             </div>
-  </transition>
+          </li>
+          <li class="moveI">
+              <h2>{{navName[0]}}-2</h2>
+              <div>
+              </div>
+          </li>
+          <li class="moveI">
+              <h2>{{navName[0]}}-3</h2>
+              <div>
+              </div>
+          </li>
+          <li class="moveI">
+              <h2>{{navName[0]}}-4</h2>
+              <div>
+              </div>
+          </li>
+          <li class="moveI">
+              <h2>{{navName[0]}}-5</h2>
+              <div>
+              </div>
+          </li>
+        </ul>
+      </div>
+      <div class="full">
+          <div>
+              <h2>{{navName[1]}}</h2>
+              <div></div>
+          </div>
+      </div>
+      <div class="full">
+          <div>
+              <h2>{{navName[2]}}</h2>
+              <div></div>
+          </div>
+      </div>
+      <div class="full">
+          <div>
+              <h2>{{navName[3]}}</h2>
+              <div></div>
+          </div>
+      </div>
+      <div class="full">
+          <div>
+              <h2>{{navName[4]}}</h2>
+              <div></div>
+          </div>
+      </div>
+    </div>
 
 </template>
 <script>
@@ -92,10 +84,12 @@ export default {
       this.press = true
       this.startx = e.offsetX - innerUl.offsetLeft
       innerUl.style.transition = 'none'
+      innerUl.style.cursor = 'grabbing'
     },
     mUp () {
       this.press = false
       const innerUl = document.querySelector('#project')
+      innerUl.style.cursor = 'auto'
       innerUl.style.transition = '0.5s'
       if (this.up < 0) {
         this.projectI++
