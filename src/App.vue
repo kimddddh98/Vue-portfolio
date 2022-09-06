@@ -1,6 +1,8 @@
 <template>
   <div>
-    <FullHeaderVue :navName="navName" :header="header" @home="home" @section="section"></FullHeaderVue>
+    <transition name="header">
+      <FullHeaderVue :navName="navName" :header="header" @home="home" @section="section"></FullHeaderVue>
+    </transition>
     <transition name="scale">
       <div id="container" v-show="main" @wheel="mainWheel">
         <div id="main-text">
@@ -48,7 +50,10 @@
         </div>
       </div>
     </transition>
-    <FullBox :sub="sub" :navName="navName" @subWheel="subWheel"></FullBox>
+
+    <transition name="scale">
+      <FullBox :sub="sub" :navName="navName" @subWheel="subWheel"></FullBox>
+    </transition>
   </div>
 </template>
 <script>
@@ -192,12 +197,15 @@ export default {
     home (e) {
       e.preventDefault()
       this.header = false
-      this.main = true
+      this.sub = false
+      // this.main = true
       this.click = 0
       setTimeout(() => {
+        this.main = true
+      }, 1000)
+      setTimeout(() => {
         this.transform = true
-      }, 2500)
-      this.sub = false
+      }, 3500)
       const headerMenu = document.querySelectorAll('.menuColor')
       for (let h = 0; h < headerMenu.length; h++) {
         headerMenu[h].style.color = this.headerColor
@@ -301,17 +309,17 @@ export default {
 
   header {
       width: 100vw;
-      padding: 10px 0;
+      padding: 20px 0;
       position: fixed;
       z-index: 9;
       #header-cube{
-          width: 3.4vw;
+          width: 3vw;
           transform:skewX(0deg);
           position: relative;
           border: none;
           &>a{
-              width: 3.4vw;
-              height: 3.4vw;
+              width: 3vw;
+              height: 3vw;
               position: absolute;
               top: 0;
               transform:skewX(0deg);
@@ -320,8 +328,8 @@ export default {
               font-family: $boxFont;
           }
           a>div {
-              width: 3.4vw;
-              height: 3.4vw;
+              width: 3vw;
+              height: 3vw;
               position: absolute;
               border: 1px solid $bg;
               background-color: $color;
@@ -332,27 +340,27 @@ export default {
               color: $bg;
           }
           .one {
-              transform: rotateY(90deg) translateZ(1.7vw);
+              transform: rotateY(90deg) translateZ(1.5vw);
           }
           .two {
-              transform: translateZ(1.7vw);
+              transform: translateZ(1.5vw);
           }
 
           .three {
-              transform: rotateY(-90deg) translateZ(1.7vw);
+              transform: rotateY(-90deg) translateZ(1.5vw);
           }
 
           .four {
-              transform: rotateX(90deg)translateZ(1.7vw);
+              transform: rotateX(90deg)translateZ(1.5vw);
           }
 
           .five {
-              transform: rotateX(-90deg) translateZ(1.7vw);
+              transform: rotateX(-90deg) translateZ(1.5vw);
 
           }
 
           .six {
-              transform: rotateX(180deg) translateZ(1.7vw);
+              transform: rotateX(180deg) translateZ(1.5vw);
 
           }
 
@@ -364,7 +372,7 @@ export default {
           li{
               width: 11vw;
               text-align: center;
-              padding: 0.5vw 0;
+              padding: 0.4vw 0;
               border: 2px solid $color;
               transform: skewX(-45deg);
           }
@@ -550,13 +558,13 @@ export default {
   }
   .scale-enter-active,
   .scale-leave-active {
-      transition: 1s linear;
-      transform: scale(1);
+    animation: fullFade 1s;
+
   }
   .scale-enter,
   .scale-leave-to {
-      opacity: 0;
-      transform: scale(0.5)
+    animation: fullFade 1s reverse;
+
   }
   .fade-enter-active,
   .fade-leave-active {
@@ -565,6 +573,43 @@ export default {
   .fade-enter,
   .fade-leave-to {
       opacity: 0;
+  }
+  .header-enter-active,
+  .header-leave-active {
+      animation: headerFade 1s;
+  }
+  .header-enter,
+  .header-leave-to {
+    animation: headerFade 0.5s reverse;
+  }
+  // .img-enter-active,
+  // .img-leave-active {
+  //     animation: img 5s;
+  // }
+  // .img-enter,
+  // .img-leave-to {
+  //   top:0
+  //   // animation: img 0.5s reverse;
+  // }
+  @keyframes fullFade{
+    0%{
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    100%{
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes headerFade{
+    0%{
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100%{
+      transform: translateY(0px);
+      opacity: 1;
+    }
   }
   @keyframes mainFadeIn{
       0%{
@@ -575,7 +620,7 @@ export default {
       }
   }
   @mixin subBox {
-      height: 95%;
+      height: 92%;
       align-self: flex-end;
       flex-direction: column;
       display: flex;
@@ -629,9 +674,14 @@ export default {
                   display:flex;
                   &>div{
                   width: 50%;
+                  overflow: hidden;
+                  position: relative;
+                  // background-color: $color;
                   img{
                       width: 100%;
-                      height: 100%;
+                      position: absolute;
+                      top: 0;
+                      transition: 5s linear;
                   }
                 }
              }
@@ -649,7 +699,7 @@ export default {
   }
   &Top{
     width: 25%;
-    background-color: aqua;
+    border: 2px solid $color;
   }
   &Bot{
     width: 50%;

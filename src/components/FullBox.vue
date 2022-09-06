@@ -8,27 +8,48 @@
                 <div class="project-text">
                 </div>
                 <div class="project-img">
+                    <img :src="projectImg[0]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
                 </div>
             </div>
           </li>
           <li class="moveI">
               <h2>{{navName[0]}}-2</h2>
               <div>
+                <div class="project-text">
+                </div>
+                <div class="project-img">
+                    <img :src="projectImg[1]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                </div>
               </div>
           </li>
           <li class="moveI">
               <h2>{{navName[0]}}-3</h2>
               <div>
+                <div class="project-text">
+                </div>
+                <div class="project-img">
+                    <img :src="projectImg[2]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                </div>
               </div>
           </li>
           <li class="moveI">
               <h2>{{navName[0]}}-4</h2>
               <div>
+                <div class="project-text">
+                </div>
+                <div class="project-img">
+                    <img :src="projectImg[3]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                </div>
               </div>
           </li>
           <li class="moveI">
               <h2>{{navName[0]}}-5</h2>
               <div>
+                <div class="project-text">
+                </div>
+                <div class="project-img">
+                    <img :src="projectImg[4]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                </div>
               </div>
           </li>
         </ul>
@@ -116,10 +137,26 @@ export default {
         require('@/assets/jquery.png'),
         require('@/assets/vue.png'),
         require('@/assets/sass.png')
+      ],
+      projectImg: [
+        require('@/assets/music.png'),
+        require('@/assets/ajax.png'),
+        require('@/assets/dogroom.png'),
+        require('@/assets/everland.png'),
+        require('@/assets/ezsoccer.png')
       ]
     }
   },
   methods: {
+    imgOut (e) {
+      e.target.style.top = 0
+      e.target.style.transition = 'none'
+    },
+    imgOver (e) {
+      const pNode = e.target.parentNode.offsetHeight
+      e.target.style.transition = '5s linear'
+      e.target.style.top = -(e.target.offsetHeight - pNode) + 'px'
+    },
     subWheel (e) {
       this.$emit('subWheel', e)
     },
