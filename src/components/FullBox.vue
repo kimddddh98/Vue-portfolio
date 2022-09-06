@@ -5,50 +5,50 @@
           <li id="project1" class="moveI">
             <h2>{{navName[0]}}-1</h2>
             <div>
-                <div class="project-text">
-                </div>
                 <div class="project-img">
-                    <img :src="projectImg[0]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                  <img :src="projectImg[0]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                </div>
+                <div class="project-text">
                 </div>
             </div>
           </li>
           <li class="moveI">
               <h2>{{navName[0]}}-2</h2>
               <div>
-                <div class="project-text">
-                </div>
                 <div class="project-img">
-                    <img :src="projectImg[1]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                  <img :src="projectImg[1]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                </div>
+                <div class="project-text">
                 </div>
               </div>
           </li>
           <li class="moveI">
               <h2>{{navName[0]}}-3</h2>
               <div>
-                <div class="project-text">
-                </div>
                 <div class="project-img">
-                    <img :src="projectImg[2]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                  <img :src="projectImg[2]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                </div>
+                <div class="project-text">
                 </div>
               </div>
           </li>
           <li class="moveI">
               <h2>{{navName[0]}}-4</h2>
               <div>
-                <div class="project-text">
-                </div>
                 <div class="project-img">
-                    <img :src="projectImg[3]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                  <img :src="projectImg[3]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                </div>
+                <div class="project-text">
                 </div>
               </div>
           </li>
           <li class="moveI">
               <h2>{{navName[0]}}-5</h2>
               <div>
-                <div class="project-text">
-                </div>
                 <div class="project-img">
-                    <img :src="projectImg[4]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                  <img :src="projectImg[4]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                </div>
+                <div class="project-text">
                 </div>
               </div>
           </li>
@@ -94,12 +94,18 @@
               <h2>{{navName[3]}}</h2>
               <div id="contact">
                 <div>
-                  <div class="front">H.P</div>
-                  <div class="back">010-4252-3496</div>
+                  <div class="front">
+                    <p>H.P</p>
+                    <div><img src="../assets/hp.png" alt=""></div>
+                  </div>
+                  <div class="back"><input type="text" v-model="hp" disabled></div>
                 </div>
                 <div>
-                  <div class="front">E-mail</div>
-                  <div class="back">amawang11@gmail.com</div>
+                  <div class="front">
+                    <p>E-mail</p>
+                    <div><img src="../assets/email.png" alt=""></div>
+                  </div>
+                  <div class="back"><input type="text" value="amawang@naver.com" disabled></div>
                 </div>
                 <div>
                   <div class="front">a</div>
@@ -144,7 +150,8 @@ export default {
         require('@/assets/dogroom.png'),
         require('@/assets/everland.png'),
         require('@/assets/ezsoccer.png')
-      ]
+      ],
+      hp: '010-4252-3496'
     }
   },
   methods: {

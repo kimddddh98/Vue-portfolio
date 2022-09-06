@@ -769,6 +769,7 @@ export default {
       background-color: rgba(254, 254, 254,0.8);
       color: $bg;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       font-size: 1.5vw;
@@ -779,10 +780,30 @@ export default {
     .front{
         transform: rotateY(0);
         position: absolute;
+        &>p{
+          padding: 10px 0;
+
+        }
+        &>div{
+          width: 20%;
+          height: 30%;
+          img{
+            width: 100%;
+          }
+        }
       }
       .back{
         transform: rotateY(-180deg);
-        font-family: $koFont;
+
+        &>input{
+          border: none;
+          color: $bg;
+          background-color: transparent;
+          outline: none;
+          text-align: center;
+          font-size: 1.5vw;
+          font-family: $koFont;
+        }
       }
   }
 }
