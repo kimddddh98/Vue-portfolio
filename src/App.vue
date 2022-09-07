@@ -92,7 +92,8 @@ export default {
       click: 0,
       sub: false,
       header: false,
-      headerColor: '#fefefe'
+      headerColor: '#fefefe',
+      headerFocus: '#333'
     }
   },
   methods: {
@@ -114,7 +115,7 @@ export default {
                   headerMenu[h].style.color = this.headerColor
                   headerMenu[h].parentNode.style.backgroundColor = 'transparent'
                 }
-                headerMenu[this.click + 2].style.color = '#3f568b'
+                headerMenu[this.click + 2].style.color = this.headerFocus
                 headerMenu[this.click + 2].parentNode.style.backgroundColor = '#fefefe'
               }
               full.style.left = -100 * (this.click + 1) + 'vw'
@@ -136,7 +137,7 @@ export default {
                 headerMenu[h].style.color = this.headerColor
                 headerMenu[h].parentNode.style.backgroundColor = 'transparent'
               }
-              headerMenu[this.click].style.color = '#3f568b'
+              headerMenu[this.click].style.color = this.headerFocus
               headerMenu[this.click].parentNode.style.backgroundColor = '#fefefe'
 
               full.style.left = -100 * (this.click - 1) + 'vw'
@@ -168,7 +169,7 @@ export default {
           }
         }
         full.style.left = -100 * this.click + 'vw'
-        headerMenu[this.click + 1].style.color = '#3f568b'
+        headerMenu[this.click + 1].style.color = this.headerFocus
         headerMenu[this.click + 1].parentNode.style.backgroundColor = '#fefefe'
       }, 500)
     },
@@ -220,7 +221,7 @@ export default {
       for (let h = 0; h < headerMenu.length; h++) {
         headerMenu[h].style.color = this.headerColor
         headerMenu[h].parentNode.style.backgroundColor = 'transparent'
-        e.target.style.color = '#3f568b'
+        e.target.style.color = this.headerFocus
         e.target.parentNode.style.backgroundColor = '#fefefe'
         if (headerMenu[h].style.color === 'rgb(63, 86, 139)') { this.click = h - 1 }
       }
@@ -762,15 +763,16 @@ background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
   align-items: center;
   font-family: $koFont;
   font-size: 23px;
-  &>div{
-    height: 80%;
-  }
   &Top{
-    width: 25%;
+    width: 20%;
+    height: 50%;
+
     border: 2px solid $color;
   }
   &Bot{
     width: 60%;
+    height: 80%;
+
     border-left: 2px solid $color;
     // background-color: aquamarine;
     display: flex;
@@ -799,14 +801,19 @@ background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
       border-bottom: 2px solid $color;
     }
     &>div{
-      width: 33.3%;
+      width: 25%;
       height: 100%;
       // border:1px solid #333;
       display: flex;
       justify-content: center;
       align-items: center;
+      // background-color:#3f568b ;
+      background-image:linear-gradient(to right, #232526, #414345);
       &:nth-of-type(2){
         border-left: 2px solid $color;
+        border-right: 2px solid $color;
+      }
+      &:nth-of-type(3){
         border-right: 2px solid $color;
       }
       &>img{
@@ -885,12 +892,17 @@ background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
   align-items: center;
   &>h2{
     font-size: 3vw;
+    width: 70%;
+    height: 10%;
+    text-align: center;
     // letter-spacing: 50px;
   }
   &>div{
+
+    text-align: center;
     width: 70%;
     height: 50%;
-    font-size: 2vw;
+    font-size: 1.7vw;
     // border: 1px solid $color;
     font-family: $koFont;
   }

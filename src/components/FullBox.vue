@@ -95,7 +95,7 @@
                   </div>
                   <div class="button-box">
                     <a :href="projectPage[3].main" target="_blank">Main</a>
-                    <a :href="projectPage[3].sub" target="_blank">Sub</a>
+                    <!-- <a :href="projectPage[3].sub" target="_blank">Sub</a> -->
                   </div>
                 </div>
               </div>
@@ -153,11 +153,13 @@
                   <div><img :src="img[0]" alt="html"></div>
                   <div><img :src="img[1]" alt="html"></div>
                   <div><img :src="img[2]" alt="html"></div>
+                  <div><img :src="img[3]" alt="html"></div>
                 </div>
                 <div>
-                  <div><img :src="img[3]" alt="html"></div>
                   <div><img :src="img[4]" alt="html"></div>
                   <div><img :src="img[5]" alt="html"></div>
+                  <div><img :src="img[6]" alt="html"></div>
+                  <div><img :src="img[7]" alt="html"></div>
 
                 </div>
               </div>
@@ -196,8 +198,7 @@
                   하지만 꾸준한 학습으로 여러 사이트를 만들게 되었습니다.<br>
                   처음 html,css를 배울때처럼 앞으로도 새로운 것을 학습하는 것을<br>
                   두려워하지않고 제 것으로 만들것이며<br>
-                  현재의 나보다 더 나은 개발자가 되는 것을 목표로 할 것 입니다.<br>
-                  지금까지 저의 포트폴리오를 봐주셔서 감사합니다!
+                  현재의 나보다 더 나은 개발자가 되는 것을 목표로 할 것 입니다.
                 </div>
                 <h2>THANK YOU FOR WATCHING !</h2>
 
@@ -219,14 +220,15 @@ export default {
       startx: null,
       up: null,
       projectI: 0,
-      moveI: 0,
       img: [
         require('@/assets/html.png'),
         require('@/assets/css.png'),
         require('@/assets/js.png'),
         require('@/assets/jquery.png'),
+        require('@/assets/ajaxicon.svg'),
+        require('@/assets/sass.png'),
         require('@/assets/vue.png'),
-        require('@/assets/sass.png')
+        require('@/assets/github.png')
       ],
       projectImg: [
         require('@/assets/music.png'),
@@ -250,11 +252,20 @@ export default {
   },
   methods: {
     projectLeft () {
-      console.log(this.moveI)
-      console.log(this.projectI)
+      const innerUl = document.querySelector('#project')
+      if (this.projectI > 0) {
+        this.projectI--
+        innerUl.style.transition = '0.5s'
+        innerUl.style.marginLeft = -100 * this.projectI + 'vw'
+      }
     },
     projectRight () {
-      console.log()
+      const innerUl = document.querySelector('#project')
+      if (this.projectI < this.projectPage.length - 1) {
+        this.projectI++
+        innerUl.style.transition = '0.5s'
+        innerUl.style.marginLeft = -100 * this.projectI + 'vw'
+      }
     },
     imgOut (e) {
       e.target.style.top = 0
@@ -282,12 +293,10 @@ export default {
       innerUl.style.transition = '0.5s'
       if (this.up < 0) {
         this.projectI++
-        this.moveI++
         innerUl.style.marginLeft = -100 * this.projectI + 'vw'
         this.up = null
       } else if (this.up > 0) {
         this.projectI--
-        this.moveI--
         innerUl.style.marginLeft = -100 * this.projectI + 'vw'
         this.up = null
       }
@@ -304,7 +313,7 @@ export default {
         innerUl.style.marginLeft = -ch + 'px'
       }
       if (parseInt(innerUl.style.marginLeft) <= 0 || parseInt(innerUl.style.marginLeft) > -ch) {
-        this.up = document.querySelectorAll('.moveI')[this.moveI].offsetLeft
+        this.up = document.querySelectorAll('.moveI')[this.projectI].offsetLeft
       }
     }
   }
