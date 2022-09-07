@@ -73,11 +73,11 @@ export default {
     return {
       main: true,
       circleStyle: [
-        { transform: 'rotateY(0deg) translateZ(30vw) translateY(0vw)', backgroundImage: 'linear-gradient(-225deg, #7DE2FC 0%, #B9B6E5 100%)' },
-        { transform: 'rotateY(70deg) translateZ(30vw) translateY(10vw)', backgroundImage: ' linear-gradient(120deg,#8ec5fc 0%,#e0c3fc 100%) ' },
-        { transform: 'rotateY(140deg) translateZ(30vw) translateY(20vw)', backgroundImage: 'linear-gradient(to top, #9795f0 0%, #fbc8d4 100%)' },
-        { transform: 'rotateY(210deg) translateZ(30vw) translateY(30vw)', backgroundImage: 'linear-gradient(-225deg, #A8BFFF 0%, #884D80 100%)' },
-        { transform: 'rotateY(280deg) translateZ(30vw) translateY(40vw)', backgroundImage: ' linear-gradient(to top, #505285 0%, #585e92 12%, #65689f 25%, #7474b0 37%, #7e7ebb 50%, #8389c7 62%, #9795d4 75%, #a2a1dc 87%, #b5aee4 100%)' }
+        { transform: 'rotateY(0deg) translateZ(30vw) translateY(0vw)', backgroundImage: 'linear-gradient(to right, #bdc3c7, #2c3e50)' },
+        { transform: 'rotateY(70deg) translateZ(30vw) translateY(10vw)', backgroundImage: 'linear-gradient(to right, #485563, #29323c)' },
+        { transform: 'rotateY(140deg) translateZ(30vw) translateY(20vw)', backgroundImage: 'linear-gradient(to right, #2C5364, #203A43, #0F2027)' },
+        { transform: 'rotateY(210deg) translateZ(30vw) translateY(30vw)', backgroundImage: 'linear-gradient(to right, #141e30, #243b55)' },
+        { transform: 'rotateY(280deg) translateZ(30vw) translateY(40vw)', backgroundImage: 'linear-gradient(to right, #232526, #414345)' }
       ],
       cube: [
         { cubeTitle: 'CSS', cubeClass: 'one' },
@@ -114,7 +114,7 @@ export default {
                   headerMenu[h].style.color = this.headerColor
                   headerMenu[h].parentNode.style.backgroundColor = 'transparent'
                 }
-                headerMenu[this.click + 2].style.color = '#8AAAE5'
+                headerMenu[this.click + 2].style.color = '#3f568b'
                 headerMenu[this.click + 2].parentNode.style.backgroundColor = '#fefefe'
               }
               full.style.left = -100 * (this.click + 1) + 'vw'
@@ -136,7 +136,7 @@ export default {
                 headerMenu[h].style.color = this.headerColor
                 headerMenu[h].parentNode.style.backgroundColor = 'transparent'
               }
-              headerMenu[this.click].style.color = '#8AAAE5'
+              headerMenu[this.click].style.color = '#3f568b'
               headerMenu[this.click].parentNode.style.backgroundColor = '#fefefe'
 
               full.style.left = -100 * (this.click - 1) + 'vw'
@@ -168,7 +168,7 @@ export default {
           }
         }
         full.style.left = -100 * this.click + 'vw'
-        headerMenu[this.click + 1].style.color = '#8AAAE5'
+        headerMenu[this.click + 1].style.color = '#3f568b'
         headerMenu[this.click + 1].parentNode.style.backgroundColor = '#fefefe'
       }, 500)
     },
@@ -220,9 +220,9 @@ export default {
       for (let h = 0; h < headerMenu.length; h++) {
         headerMenu[h].style.color = this.headerColor
         headerMenu[h].parentNode.style.backgroundColor = 'transparent'
-        e.target.style.color = '#8AAAE5'
+        e.target.style.color = '#3f568b'
         e.target.parentNode.style.backgroundColor = '#fefefe'
-        if (headerMenu[h].style.color === 'rgb(138, 170, 229)') { this.click = h - 1 }
+        if (headerMenu[h].style.color === 'rgb(63, 86, 139)') { this.click = h - 1 }
       }
       for (let i = 0; i < fullbox.length; i++) {
         fullbox[i].style.width = 90 + 'vw'
@@ -258,8 +258,8 @@ export default {
       list-style: none;
   }
 
-  $bg: #8AAAE5;
-  // $bg:#DCE2F0;
+  // $bg: rgb(138, 170, 229);
+  $bg:#000;
   $color: #fefefe;
   $grColor:radial-gradient(circle, rgba(237,242,246,1) 8%, rgba(138,170,229,1) 78%);
   $boxFont:  'Cormorant SC', serif;
@@ -286,7 +286,10 @@ export default {
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background-image: $grColor;
+      // background-image: $grColor;
+      background-color: #000;
+      // background: rgb(170,170,170);
+background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
   }
 
   body::-webkit-scrollbar {
@@ -639,6 +642,27 @@ export default {
       }
       @content;
   }
+  @mixin arrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  cursor: pointer;
+    img{
+      width:50px
+    }
+    @content;
+  }
+  #wheel-left{
+  @include arrow;
+  left: 10px;
+
+}
+#wheel-right{
+  @include arrow;
+  right: 10px;
+  transform: rotate(180deg);
+}
   #full {
       width: 500vw;
       height: 100vh;
@@ -652,10 +676,11 @@ export default {
           height: 100vh;
           transition: all 0.4s;
           overflow: hidden;
+          position: relative;
           &:not(:first-of-type){
               display: flex;
           }
-          &>div{
+          &>.full-sub{
               width: 100%;
               @include subBox
           }
@@ -666,9 +691,10 @@ export default {
           height: 100%;
           display: flex;
           align-items: center;
-          // cursor:;
           li {
               width: 20%;
+              pointer-events: none;
+
               @include subBox;
               &>div{
                   display:flex;
@@ -676,17 +702,59 @@ export default {
                   width: 50%;
                   overflow: hidden;
                   position: relative;
-                  // background-color: $color;
                   img{
                       width: 100%;
                       position: absolute;
                       top: 0;
                       transition: 5s linear;
+                      pointer-events: all;
                   }
                 }
              }
           }
       }
+  }
+  .project-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-family: $koFont;
+    font-size: 1.2vw;
+
+    .text-box{
+      display: flex;
+      align-items: center;
+      width: 80%;
+      height: 70%;
+      line-height: 2vw;
+
+    }
+    .button-box{
+      width: 50%;
+      height: 10%;
+      display: flex;
+      justify-content: space-between;
+      pointer-events:all;
+      &>a{
+        width: 49%;
+        height: 100%;
+        background-color: $color;
+        border: 1px solid $bg;
+        color: $bg;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5vw;
+        transition: 0.3s ease-in;
+        &:hover{
+          // background: ;
+          background-color: transparent;
+          color: $color;
+          border:1px solid $color
+        }
+      }
+    }
   }
 #about{
   display: flex;
@@ -702,15 +770,21 @@ export default {
     border: 2px solid $color;
   }
   &Bot{
-    width: 50%;
+    width: 60%;
+    border-left: 2px solid $color;
     // background-color: aquamarine;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     &>div{
-      width: 100%;
+      width: 90%;
       height: 30%;
+      align-self: flex-end;
       // background-color:blue;
+    }
+    &>p{
+      width: 90%;
+      align-self: flex-end;
     }
   }
 }
@@ -746,8 +820,8 @@ export default {
   justify-content: space-around;
   align-items: center;
   &>div{
-    width: 25%;
-    height: 50%;
+    width: 28%;
+    height: 55%;
     position: relative;
     &:hover .front{
       transform: rotateY(180deg);
@@ -755,24 +829,17 @@ export default {
     &:hover .back{
       transform: rotateY(0deg);
     }
-    // border: 2px solid $bg;
-    // background-color: rgba(254, 254, 254,0.8);
-    // color: $bg;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // font-size: 2vw;
     &>div{
       width: 100%;
       height: 100%;
-      border: 2px solid $bg;
-      background-color: rgba(254, 254, 254,0.8);
-      color: $bg;
+      // border: 2px solid $color;
+      // background-color: rgba(254, 254, 254,0.8);
+      background-image: linear-gradient(to right, #232526, #414345);
+      color: $color;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-size: 1.5vw;
       backface-visibility: hidden;
       transition: 1s;
       cursor: pointer;
@@ -780,6 +847,8 @@ export default {
     .front{
         transform: rotateY(0);
         position: absolute;
+        font-size: 2vw;
+
         &>p{
           padding: 10px 0;
 
@@ -794,10 +863,12 @@ export default {
       }
       .back{
         transform: rotateY(-180deg);
+        font-family: $koFont;
+        font-size: 1.5vw;
 
         &>input{
           border: none;
-          color: $bg;
+          color: $color;
           background-color: transparent;
           outline: none;
           text-align: center;
@@ -807,4 +878,22 @@ export default {
       }
   }
 }
+#more{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &>h2{
+    font-size: 3vw;
+    // letter-spacing: 50px;
+  }
+  &>div{
+    width: 70%;
+    height: 50%;
+    font-size: 2vw;
+    // border: 1px solid $color;
+    font-family: $koFont;
+  }
+}
+
 </style>
