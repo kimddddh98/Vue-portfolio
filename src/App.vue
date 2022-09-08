@@ -223,7 +223,7 @@ export default {
         headerMenu[h].parentNode.style.backgroundColor = 'transparent'
         e.target.style.color = this.headerFocus
         e.target.parentNode.style.backgroundColor = '#fefefe'
-        if (headerMenu[h].style.color === 'rgb(63, 86, 139)') { this.click = h - 1 }
+        if (headerMenu[h].style.color === 'rgb(51, 51, 51)') { this.click = h - 1 }
       }
       for (let i = 0; i < fullbox.length; i++) {
         fullbox[i].style.width = 90 + 'vw'
