@@ -52,7 +52,7 @@
     </transition>
 
     <transition name="scale">
-      <FullBox :sub="sub" :navName="navName" @subWheel="subWheel"></FullBox>
+      <FullBox :sub="sub" :navName="navName" @subWheel="subWheel" :circleStyle="circleStyle"></FullBox>
     </transition>
   </div>
 </template>
@@ -637,7 +637,7 @@ export default {
       justify-content: space-around;
       position: relative;
       transition: all 0.6s;
-      background-color: $bg;
+      background-color: #a8c0ee;
       &>.full {
           width: 100vw;
           height: 100vh;

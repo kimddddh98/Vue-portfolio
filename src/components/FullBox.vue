@@ -211,7 +211,8 @@
 export default {
   props: {
     navName: Array,
-    sub: Boolean
+    sub: Boolean,
+    circleStyle: Array
   },
   data () {
     return {
