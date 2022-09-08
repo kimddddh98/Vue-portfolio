@@ -93,64 +93,66 @@ export default {
       sub: false,
       header: false,
       headerColor: '#fefefe',
-      headerFocus: 'rgb(138, 170, 229)'
+      headerFocus: 'rgb(138, 170, 229)',
+      timer: false
     }
   },
   methods: {
     subWheel (e) {
-      if (!this.timer) {
+      if (this.timer === false) {
+        const fullbox = document.querySelectorAll('.full')
+        const full = document.getElementById('full')
+        const headerMenu = document.querySelectorAll('.menuColor')
+        this.timer = true
         this.timer = setTimeout(() => {
-          this.timer = null
-          const fullbox = document.querySelectorAll('.full')
-          const full = document.getElementById('full')
-          const headerMenu = document.querySelectorAll('.menuColor')
-          if (e.wheelDelta <= 0) {
-            if (this.click !== fullbox.length - 1 && this.click < fullbox.length - 1) {
-              for (let i = 0; i < fullbox.length; i++) {
-                fullbox[i].style.width = 90 + 'vw'
-                fullbox[i].style.height = 85 + 'vh'
-              }
-              if (this.click < headerMenu.length - 2) {
-                for (let h = 0; h < headerMenu.length; h++) {
-                  headerMenu[h].style.color = this.headerColor
-                  headerMenu[h].parentNode.style.backgroundColor = 'transparent'
-                }
-                headerMenu[this.click + 2].style.color = this.headerFocus
-                headerMenu[this.click + 2].parentNode.style.backgroundColor = '#fefefe'
-              }
-              full.style.left = -100 * (this.click + 1) + 'vw'
-              setTimeout(() => {
-                for (let i = 0; i < fullbox.length; i++) {
-                  fullbox[i].style.width = 100 + 'vw'
-                  fullbox[i].style.height = 100 + 'vh'
-                }
-                this.click + 1 >= fullbox.length - 1 ? this.click = fullbox.length - 1 : this.click++
-              }, 600)
+          this.timer = false
+        }, 600)
+        if (e.wheelDelta <= 0) {
+          if (this.click !== fullbox.length - 1 && this.click < fullbox.length - 1) {
+            for (let i = 0; i < fullbox.length; i++) {
+              fullbox[i].style.width = 90 + 'vw'
+              fullbox[i].style.height = 85 + 'vh'
             }
-          } else {
-            if (this.click !== 0 && this.click > 0) {
-              for (let i = 0; i < fullbox.length; i++) {
-                fullbox[i].style.width = 90 + 'vw'
-                fullbox[i].style.height = 85 + 'vh'
-              }
+            if (this.click < headerMenu.length - 2) {
               for (let h = 0; h < headerMenu.length; h++) {
                 headerMenu[h].style.color = this.headerColor
                 headerMenu[h].parentNode.style.backgroundColor = 'transparent'
               }
-              headerMenu[this.click].style.color = this.headerFocus
-              headerMenu[this.click].parentNode.style.backgroundColor = '#fefefe'
-
-              full.style.left = -100 * (this.click - 1) + 'vw'
-              setTimeout(() => {
-                for (let i = 0; i < fullbox.length; i++) {
-                  fullbox[i].style.width = 100 + 'vw'
-                  fullbox[i].style.height = 100 + 'vh'
-                }
-                this.click <= 0 ? this.click = 0 : this.click--
-              }, 600)
+              headerMenu[this.click + 2].style.color = this.headerFocus
+              headerMenu[this.click + 2].parentNode.style.backgroundColor = '#fefefe'
             }
+            full.style.left = -100 * (this.click + 1) + 'vw'
+            setTimeout(() => {
+              for (let i = 0; i < fullbox.length; i++) {
+                fullbox[i].style.width = 100 + 'vw'
+                fullbox[i].style.height = 100 + 'vh'
+              }
+              this.click + 1 >= fullbox.length - 1 ? this.click = fullbox.length - 1 : this.click++
+            }, 600)
           }
-        }, 200)
+        } else {
+          if (this.click !== 0 && this.click > 0) {
+            for (let i = 0; i < fullbox.length; i++) {
+              fullbox[i].style.width = 90 + 'vw'
+              fullbox[i].style.height = 85 + 'vh'
+            }
+            for (let h = 0; h < headerMenu.length; h++) {
+              headerMenu[h].style.color = this.headerColor
+              headerMenu[h].parentNode.style.backgroundColor = 'transparent'
+            }
+            headerMenu[this.click].style.color = this.headerFocus
+            headerMenu[this.click].parentNode.style.backgroundColor = '#fefefe'
+
+            full.style.left = -100 * (this.click - 1) + 'vw'
+            setTimeout(() => {
+              for (let i = 0; i < fullbox.length; i++) {
+                fullbox[i].style.width = 100 + 'vw'
+                fullbox[i].style.height = 100 + 'vh'
+              }
+              this.click <= 0 ? this.click = 0 : this.click--
+            }, 600)
+          }
+        }
       }
     },
     subPage: function (e) {
