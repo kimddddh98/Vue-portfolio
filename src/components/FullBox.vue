@@ -1,8 +1,8 @@
 <template>
     <div id="full" v-show="sub" @wheel.prevent="subWheel">
       <div class="full" id="outer">
-        <div id="wheel-left" @click="projectLeft"><img :src="wheelImg" alt="left"></div>
-        <div id="wheel-right" @click="projectRight"><img :src="wheelImg" alt="right"></div>
+        <div id="wheel-left" @click="projectLeft"><img :src="wheelImg" alt="left" v-show="projectI>0"></div>
+        <div id="wheel-right" @click="projectRight"><img :src="wheelImg" alt="right" v-show="projectI<projectPage.length-1"></div>
         <ul id="project" @mousedown="mDown" @mouseup="mUp" @mousemove="mMove">
           <li id="project1" class="moveI">
             <h2>{{navName[0]}}-1</h2>
@@ -15,9 +15,9 @@
                     음악을 주제로 만든 웹사이트입니다.<br>
                     svg 배경을 활용했으며 검정색 테마를 선정했습니다.<br>
                     Javascript, jquery를 활용하여
-                    메인동영상의 남은길이에 따라 달라지는 재생바와 일지정지, 재생 버튼을 만들었으며,<br>
+                    메인동영상의 길이에 따라 달라지는 재생바와 일지정지, 재생 버튼을 만들었으며,<br>
                     차트 부분에는 Json 파일과 ajax를 이용하여 차트를 불러오도록 하였습니다.<br>
-                    오픈api를 모르던 상태로 작업을 시작하여 음악재생 및 재생목록을 구현 못한것이 아쉬워
+                    오픈API를 모르던 상태로 작업을 시작하여 음악재생 및 재생목록을 구현 못한것이 아쉬워
                     추후에 기능을 추가해볼 생각입니다.<br>
                     반응형 : O
 
@@ -38,7 +38,7 @@
                 <div class="project-text">
                   <div class="text-box">
                     공부서점사이트 클론코딩 프로젝트입니다.<br>
-                    카카오api를 활용하여 작업을 진행하였고
+                    카카오API를 활용하여 작업을 진행하였고
                     api 활용하는것이 목적이었기 때문에 최대한 원래 사이트와 똑같이
                     구현해보려 했습니다.<br>
                     베스트 차트 부분에서는 Javascript의 이중배열을 활용하여
@@ -108,7 +108,7 @@
                 </div>
                 <div class="project-text">
                   <div class="text-box">
-                    html과 css를 배운후 처음으로 작업해본 웹사이트입니다.<br>
+                    HTML과 CSS를 배운후 처음으로 작업해본 웹사이트입니다.<br>
                     첫 프로젝트인 만큼 제가 가장 좋아하는 축구를 주제로 선정했으며
                     축구용품 사이트를 만들게 되었습니다.<br>
                     작업을 하면서 추가로 배우게 된 내용이 생길 때 마다
@@ -139,7 +139,7 @@
                   <div>
                     신입 웹 퍼블리셔, 프론트엔드 개발자를 희망하는 김동현 입니다.<br>
                     현재에 만족하지않고 새로운 기술을 습득하는 것을 추구하며<br>
-                    새롭게 배운 것들을 활용하여 제 것으로 만드는것에 흥미를 느낍니다.
+                    새로운 기술을 배울 때 작동원리를 알아낸 후 그것을 직접 구현하는 것에 흥미를 느낍니다.
                   </div>
                 </div>
               </div>
@@ -290,7 +290,7 @@ export default {
     mUp () {
       this.press = false
       const innerUl = document.querySelector('#project')
-      innerUl.style.cursor = 'auto'
+      innerUl.style.cursor = 'grab'
       innerUl.style.transition = '0.5s'
       if (this.up < 0) {
         this.projectI++

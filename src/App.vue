@@ -624,6 +624,7 @@ export default {
   #wheel-left{
   @include arrow;
   left: 0.5vw;
+  // display: none
 
 }
 #wheel-right{
@@ -660,6 +661,7 @@ export default {
           height: 100%;
           display: flex;
           align-items: center;
+          cursor: grab;
           li {
               width: 20%;
               pointer-events: none;
