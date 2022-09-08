@@ -615,18 +615,18 @@ export default {
   z-index: 3;
   cursor: pointer;
     img{
-      width:50px
+      width:3vw
     }
     @content;
   }
   #wheel-left{
   @include arrow;
-  left: 10px;
+  left: 0.5vw;
 
 }
 #wheel-right{
   @include arrow;
-  right: 10px;
+  right:0.5vw;
   transform: rotate(180deg);
 }
   #full {
@@ -746,7 +746,7 @@ export default {
     justify-content: space-around;
     &>div{
       width: 90%;
-      height: 30%;
+      height: 20%;
       align-self: flex-end;
       // background-color:blue;
     }
@@ -863,7 +863,7 @@ export default {
   &>div{
     text-align: center;
     width: 70%;
-    height: 50%;
+    height: 40%;
     font-size: 1.7vw;
     font-family: $koFont;
   }
