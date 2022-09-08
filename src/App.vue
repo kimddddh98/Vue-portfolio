@@ -73,11 +73,11 @@ export default {
     return {
       main: true,
       circleStyle: [
-        { transform: 'rotateY(0deg) translateZ(30vw) translateY(0vw)', backgroundImage: 'linear-gradient(to right, #bdc3c7, #2c3e50)' },
-        { transform: 'rotateY(70deg) translateZ(30vw) translateY(10vw)', backgroundImage: 'linear-gradient(to right, #485563, #29323c)' },
-        { transform: 'rotateY(140deg) translateZ(30vw) translateY(20vw)', backgroundImage: 'linear-gradient(to right, #2C5364, #203A43, #0F2027)' },
-        { transform: 'rotateY(210deg) translateZ(30vw) translateY(30vw)', backgroundImage: 'linear-gradient(to right, #141e30, #243b55)' },
-        { transform: 'rotateY(280deg) translateZ(30vw) translateY(40vw)', backgroundImage: 'linear-gradient(to right, #232526, #414345)' }
+        { transform: 'rotateY(0deg) translateZ(30vw) translateY(0vw)', backgroundImage: 'linear-gradient(-225deg, #7DE2FC 0%, #B9B6E5 100%)' },
+        { transform: 'rotateY(70deg) translateZ(30vw) translateY(10vw)', backgroundImage: 'linear-gradient(120deg,#8ec5fc 0%,#e0c3fc 100%)' },
+        { transform: 'rotateY(140deg) translateZ(30vw) translateY(20vw)', backgroundImage: 'linear-gradient(to top, #9795f0 0%, #fbc8d4 100%)' },
+        { transform: 'rotateY(210deg) translateZ(30vw) translateY(30vw)', backgroundImage: 'linear-gradient(-225deg, #A8BFFF 0%, #884D80 100%)' },
+        { transform: 'rotateY(280deg) translateZ(30vw) translateY(40vw)', backgroundImage: ' linear-gradient(to top, #505285 0%, #585e92 12%, #65689f 25%, #7474b0 37%, #7e7ebb 50%, #8389c7 62%, #9795d4 75%, #a2a1dc 87%, #b5aee4 100%)' }
       ],
       cube: [
         { cubeTitle: 'CSS', cubeClass: 'one' },
@@ -93,7 +93,7 @@ export default {
       sub: false,
       header: false,
       headerColor: '#fefefe',
-      headerFocus: '#333'
+      headerFocus: 'rgb(138, 170, 229)'
     }
   },
   methods: {
@@ -161,6 +161,7 @@ export default {
       setTimeout(() => {
         this.header = true
         this.sub = true
+        // document.getElementsByTagName('body').style.backgroundColor = this.headerFocus
         document.getElementById('project').style.width = this.circleStyle.length * 100 + '%'
         full.style.width = this.circleStyle.length * 100 + 'vw'
         for (let i = 0; i < document.querySelectorAll('.circleItem').length; i++) {
@@ -223,7 +224,7 @@ export default {
         headerMenu[h].parentNode.style.backgroundColor = 'transparent'
         e.target.style.color = this.headerFocus
         e.target.parentNode.style.backgroundColor = '#fefefe'
-        if (headerMenu[h].style.color === 'rgb(51, 51, 51)') { this.click = h - 1 }
+        if (headerMenu[h].style.color === 'rgb(138, 170, 229)') { this.click = h - 1 }
       }
       for (let i = 0; i < fullbox.length; i++) {
         fullbox[i].style.width = 90 + 'vw'
@@ -260,7 +261,7 @@ export default {
   }
 
   // $bg: rgb(138, 170, 229);
-  $bg:#000;
+  $bg:#8AAAE5;
   $color: #fefefe;
   $grColor:radial-gradient(circle, rgba(237,242,246,1) 8%, rgba(138,170,229,1) 78%);
   $boxFont:  'Cormorant SC', serif;
@@ -287,30 +288,8 @@ export default {
       width: 100%;
       height: 100%;
       overflow: hidden;
-      // background-image: $grColor;
-      background-color: #000;
-      // background: rgb(170,170,170);
-background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
+      background: $grColor
   }
-
-  body::-webkit-scrollbar {
-      width: 8px;
-      /* 스크롤바의 너비 */
-  }
-
-  body::-webkit-scrollbar-thumb {
-      height: 30%;
-      /* 스크롤바의 길이 */
-      background: $bg;
-      /* 스크롤바의 색상 */
-      border-radius: 10px;
-  }
-
-  body::-webkit-scrollbar-track {
-      background: #c7d3ee
-          /*스크롤바 뒷 배경 색상*/
-  }
-
   header {
       width: 100vw;
       padding: 20px 0;
@@ -360,12 +339,10 @@ background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
 
           .five {
               transform: rotateX(-90deg) translateZ(1.5vw);
-
           }
 
           .six {
               transform: rotateX(180deg) translateZ(1.5vw);
-
           }
 
       }
@@ -464,7 +441,7 @@ background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
                       transform: rotateY(90deg) translateZ(8.25vw);
                   }
               }
-              @keyframes scale2 {
+              @keyframes scale3 {
                   0% {
                       transform: translateX(-16.5vw) translateZ(8.25vw);
                   }
@@ -508,29 +485,25 @@ background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
               }
 
               .three {
-                      transform: translateX(-16.5vw) translateZ(8.25vw);
-                      animation: scale2 1.5s both;
+                  transform: translateX(-16.5vw) translateZ(8.25vw);
+                  animation: scale3 1.5s both;
                   animation-delay: 0.5s;
-                  // animation-delay: 2s;
-
               }
 
               .four {
                   transform: translateY(-16.5vw) translateZ(8.25vw);
                   animation: scale4 1.5s both;
                   animation-delay: 0.5s;
-
               }
 
               .five {
-                      transform: translateY(16.5vw) translateZ(8.25vw);
+                  transform: translateY(16.5vw) translateZ(8.25vw);
                   animation: scale5 1.5s both;
                   animation-delay: 0.5s;
-
               }
 
               .six {
-                      transform: translateY(33vw) translateZ(8.25vw);
+                  transform: translateY(33vw) translateZ(8.25vw);
                   animation: scale6 1.5s both;
                   animation-delay: 0.5s;
               }
@@ -552,6 +525,7 @@ background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
               font-size: 3vw;
               color: $color;
               font-family: $boxFont;
+              pointer-events: none;
           }
           img {
               width: 100%;
@@ -586,15 +560,6 @@ background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
   .header-leave-to {
     animation: headerFade 0.5s reverse;
   }
-  // .img-enter-active,
-  // .img-leave-active {
-  //     animation: img 5s;
-  // }
-  // .img-enter,
-  // .img-leave-to {
-  //   top:0
-  //   // animation: img 0.5s reverse;
-  // }
   @keyframes fullFade{
     0%{
       transform: scale(0.5);
@@ -672,6 +637,7 @@ background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
       justify-content: space-around;
       position: relative;
       transition: all 0.6s;
+      background-color: $bg;
       &>.full {
           width: 100vw;
           height: 100vh;
@@ -808,7 +774,6 @@ background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
       justify-content: center;
       align-items: center;
       // background-color:#3f568b ;
-      background-image:linear-gradient(to right, #232526, #414345);
       &:nth-of-type(2){
         border-left: 2px solid $color;
         border-right: 2px solid $color;
@@ -839,10 +804,9 @@ background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
     &>div{
       width: 100%;
       height: 100%;
-      // border: 2px solid $color;
-      // background-color: rgba(254, 254, 254,0.8);
-      background-image: linear-gradient(to right, #232526, #414345);
-      color: $color;
+      color: $bg;
+      background-color: $color;
+      border: 1px solid $bg;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -875,7 +839,7 @@ background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
 
         &>input{
           border: none;
-          color: $color;
+          color: $bg;
           background-color: transparent;
           outline: none;
           text-align: center;
@@ -895,15 +859,12 @@ background: radial-gradient(circle, rgba(107,107,107,1) 0%, rgba(0,0,0,1) 53%);
     width: 70%;
     height: 10%;
     text-align: center;
-    // letter-spacing: 50px;
   }
   &>div{
-
     text-align: center;
     width: 70%;
     height: 50%;
     font-size: 1.7vw;
-    // border: 1px solid $color;
     font-family: $koFont;
   }
 }

@@ -1,14 +1,14 @@
 <template>
     <div id="full" v-show="sub" @wheel.prevent="subWheel">
       <div class="full" id="outer">
-        <div id="wheel-left" @click="projectLeft"><img src="../assets/left.png" alt=""></div>
-        <div id="wheel-right" @click="projectRight"><img src="../assets/left.png" alt=""></div>
+        <div id="wheel-left" @click="projectLeft"><img :src="wheelImg" alt="left"></div>
+        <div id="wheel-right" @click="projectRight"><img :src="wheelImg" alt="right"></div>
         <ul id="project" @mousedown="mDown" @mouseup="mUp" @mousemove="mMove">
           <li id="project1" class="moveI">
             <h2>{{navName[0]}}-1</h2>
             <div>
                 <div class="project-img">
-                  <img :src="projectImg[0]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                  <img :src="projectImg[0]" alt="p0" @mouseover.stop="imgOver" @mouseout="imgOut">
                 </div>
                 <div class="project-text">
                   <div class="text-box">
@@ -33,7 +33,7 @@
               <h2>{{navName[0]}}-2</h2>
               <div>
                 <div class="project-img">
-                  <img :src="projectImg[1]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                  <img :src="projectImg[1]" alt="p1" @mouseover.stop="imgOver" @mouseout="imgOut">
                 </div>
                 <div class="project-text">
                   <div class="text-box">
@@ -59,7 +59,7 @@
               <h2>{{navName[0]}}-3</h2>
               <div>
                 <div class="project-img">
-                  <img :src="projectImg[2]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                  <img :src="projectImg[2]" alt="p2" @mouseover.stop="imgOver" @mouseout="imgOut">
                 </div>
                 <div class="project-text">
                   <div class="text-box">
@@ -80,7 +80,7 @@
               <h2>{{navName[0]}}-4</h2>
               <div>
                 <div class="project-img">
-                  <img :src="projectImg[3]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                  <img :src="projectImg[3]" alt="p3" @mouseover.stop="imgOver" @mouseout="imgOut">
                 </div>
                 <div class="project-text">
                   <div class="text-box">
@@ -104,7 +104,7 @@
               <h2>{{navName[0]}}-5</h2>
               <div>
                 <div class="project-img">
-                  <img :src="projectImg[4]" alt="a" @mouseover.stop="imgOver" @mouseout="imgOut">
+                  <img :src="projectImg[4]" alt="p4" @mouseover.stop="imgOver" @mouseout="imgOut">
                 </div>
                 <div class="project-text">
                   <div class="text-box">
@@ -131,7 +131,7 @@
                 <div id="aboutTop">사진</div>
                 <div id="aboutBot">
                   <div>
-                    안녕하세요 신입 웹 퍼블리셔, 프론트엔드 개발자를 희망하는 김동현 입니다.<br>
+                    신입 웹 퍼블리셔, 프론트엔드 개발자를 희망하는 김동현 입니다.<br>
                     현재에 만족하지않고 새로운 기술을 습득하는 것을 추구하며<br>
                     새롭게 배운 것들을 활용하여 제 것으로 만드는것에 흥미를 느낍니다.
                   </div>
@@ -139,8 +139,8 @@
                   <p>1998.12.10</p>
                   <p>경기도 안산시 거주</p>
                   <p>amawang@naver.com</p>
-                  <p>2022.03 ~ 2022.09 라인컴퓨터아트학원 UI/UX 디자인 & 웹펴블리셔 과정</p>
-                  <p>웹디자인기능사(09.08 합격자발표)</p>
+                  <p>2022.03 ~ 2022.09 라인컴퓨터아트학원 UI/UX 디자인 & 웹퍼블리셔 과정</p>
+                  <p>웹디자인기능사</p>
                 </div>
               </div>
           </div>
@@ -151,15 +151,15 @@
               <div id="skill">
                 <div>
                   <div><img :src="img[0]" alt="html"></div>
-                  <div><img :src="img[1]" alt="html"></div>
-                  <div><img :src="img[2]" alt="html"></div>
-                  <div><img :src="img[3]" alt="html"></div>
+                  <div><img :src="img[1]" alt="css"></div>
+                  <div><img :src="img[2]" alt="js"></div>
+                  <div><img :src="img[3]" alt="jquery"></div>
                 </div>
                 <div>
-                  <div><img :src="img[4]" alt="html"></div>
-                  <div><img :src="img[5]" alt="html"></div>
-                  <div><img :src="img[6]" alt="html"></div>
-                  <div><img :src="img[7]" alt="html"></div>
+                  <div><img :src="img[4]" alt="ajax"></div>
+                  <div><img :src="img[5]" alt="sass"></div>
+                  <div><img :src="img[6]" alt="vue"></div>
+                  <div><img :src="img[7]" alt="github"></div>
 
                 </div>
               </div>
@@ -193,8 +193,7 @@
               <h2>{{navName[4]}}</h2>
               <div id="more">
                 <div>
-                  <!-- 짧은 시간이지만 6개월동안 많은 것을 배웠습니다. -->
-                  웹 사이트를 만드는 것은 저에게 상상도 할 수 없던 일이었습니다.<br>
+                  웹 사이트를 만드는 것은 저에게 상상할 수 없던 일이었습니다.<br>
                   하지만 꾸준한 학습으로 여러 사이트를 만들게 되었습니다.<br>
                   처음 html,css를 배울때처럼 앞으로도 새로운 것을 학습하는 것을<br>
                   두려워하지않고 제 것으로 만들것이며<br>
@@ -237,6 +236,7 @@ export default {
         require('@/assets/everland.png'),
         require('@/assets/ezsoccer.png')
       ],
+      wheelImg: require('@/assets/left.png'),
       hp: '010-4252-3496',
       mainPage: 'https://kimddddh98.github.io/project3/',
       subPage: 'https://kimddddh98.github.io/project3/sub.html',
