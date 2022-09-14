@@ -736,8 +736,10 @@ export default {
   &Top{
     width: 20%;
     height: 50%;
-
     border: 2px solid $color;
+    img{
+      width:100%
+    }
   }
   &Bot{
     width: 60%;

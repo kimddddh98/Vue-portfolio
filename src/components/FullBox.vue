@@ -20,7 +20,6 @@
                     오픈API를 모르던 상태로 작업을 시작하여 음악재생 및 재생목록을 구현 못한것이 아쉬워
                     추후에 기능을 추가해볼 생각입니다.<br>
                     반응형 : O
-
                   </div>
                   <div class="button-box">
                     <a :href="projectPage[0].main" target="_blank">Main</a>
@@ -128,7 +127,7 @@
           <div class="full-sub">
               <h2>{{navName[1]}}</h2>
               <div id="about">
-                <div id="aboutTop">사진</div>
+                <div id="aboutTop"><img :src="img[8]" alt="photo"></div>
                 <div id="aboutBot">
                   <p>김동현</p>
                   <p>1998.12.10</p>
@@ -228,7 +227,8 @@ export default {
         require('@/assets/ajaxicon.svg'),
         require('@/assets/sass.png'),
         require('@/assets/vue.png'),
-        require('@/assets/github.png')
+        require('@/assets/github.png'),
+        require('@/assets/kim.jpg')
       ],
       projectImg: [
         require('@/assets/music.png'),
